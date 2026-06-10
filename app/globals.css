@@ -1,26 +1,96 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ═══════════════════════════════════════════════════════════════════════════
+   MEDICONNECT — Paleta celeste/blanco para Tailwind v4
+   Uso: bg-brand-500, text-brand-700, border-brand-300, etc.
+   ═══════════════════════════════════════════════════════════════════════════ */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* ── Fuente ──────────────────────────────────────────────────────────── */
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  /* ── Brand (celeste médico) ──────────────────────────────────────────── */
+  --color-brand-50:  #eaf8ff;
+  --color-brand-100: #d0f0fd;
+  --color-brand-200: #a8e1fb;
+  --color-brand-300: #5ec9f7;
+  --color-brand-400: #22aee8;
+  --color-brand-500: #0b90cc;
+  --color-brand-600: #0872a8;
+  --color-brand-700: #065a88;
+  --color-brand-800: #054a71;
+  --color-brand-900: #043c5d;
+
+  /* ── Neutral (blancos/grises suaves) ─────────────────────────────────── */
+  --color-neutral-0:   #ffffff;
+  --color-neutral-50:  #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+
+  /* ── Semánticos ──────────────────────────────────────────────────────── */
+  --color-success-light: #d1fae5;
+  --color-success:       #10b981;
+  --color-success-dark:  #065f46;
+
+  --color-warning-light: #fef3c7;
+  --color-warning:       #f59e0b;
+  --color-warning-dark:  #92400e;
+
+  --color-danger-light: #fee2e2;
+  --color-danger:       #ef4444;
+  --color-danger-dark:  #991b1b;
+
+  --color-info-light: #dbeafe;
+  --color-info:       #3b82f6;
+  --color-info-dark:  #1e40af;
+
+  /* ── Fondos y textos base ────────────────────────────────────────────── */
+  --color-background: var(--color-neutral-0);
+  --color-foreground: var(--color-neutral-900);
+
+  /* ── Sombras ─────────────────────────────────────────────────────────── */
+  --shadow-card:  0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+  --shadow-modal: 0 20px 60px -12px rgb(0 0 0 / 0.18);
+
+  /* ── Animaciones ─────────────────────────────────────────────────────── */
+  --animate-fade-in:  fadeIn 0.2s ease-out;
+  --animate-slide-up: slideUp 0.25s ease-out;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Base ────────────────────────────────────────────────────────────────── */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
+
+/* ── Focus accesible ─────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-brand-500), 0 0 0 4px white;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--color-neutral-100); }
+::-webkit-scrollbar-thumb { background: var(--color-neutral-300); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-neutral-400); }
